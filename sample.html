@@ -1,0 +1,169 @@
+<html>
+    <title>{{website}} Page source analytics</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <body>
+        <div class="container">
+            <br>
+            <h1 class="title">{{website}} Page source analytics</h1>
+            <h2 class="title"><i class="fa-solid fa-image"></i>&nbsp;Image Resources</h2>
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="heading">Total Images</p>
+                    <p class="subtitle">{{totalImages}}</p>
+                  </div>
+                </div>
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="heading">Founded</p>
+                    <p class="subtitle">{{foundedImages}}</p>
+                  </div>
+                </div>
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="heading">Unreachable</p>
+                    <p class="subtitle">{{unreachAbleImages}}</p>
+                  </div>
+                </div>
+              </nav>
+            <div class="tabs">
+                <ul>
+                  <li class="is-active tab-image" onclick="openImages(event,'foundedImages')" ><a><i class="fa-solid fa-check"></i>&nbsp;Founded</a></li>
+                  <li class="tab-image" onclick="openImages(event,'unreachAbleImages')"><a><i class="fa-solid fa-ban"></i>&nbsp;Unreachable</a></li>
+                </ul>
+            </div>
+            <div class="content-image" id="foundedImages">
+                {{foundedImagesTable}}
+            </div>
+            <div class="content-image" style="display: none;" id="unreachAbleImages">
+                {{unreachAbleImagesTable}}
+            </div>
+
+            <br>
+            <br>
+
+
+            <h2 class="title"><i class="fa-brands fa-js"></i>&nbsp;Javascript Resources</h2>
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="heading">Total Images</p>
+                    <p class="subtitle">{{totalJs}}</p>
+                  </div>
+                </div>
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="heading">Founded</p>
+                    <p class="subtitle">{{foundedJs}}</p>
+                  </div>
+                </div>
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="heading">Unreachable</p>
+                    <p class="subtitle">{{unrechAbleJs}}</p>
+                  </div>
+                </div>
+              </nav>
+            <div class="tabs">
+                <ul>
+                  <li class="is-active tab-js" onclick="openJs(event,'foundedJs')"><a><i class="fa-solid fa-check"></i>&nbsp;Founded</a></li>
+                  <li class="tab-js" onclick="openJs(event,'unreachAbleJs')"><a><i class="fa-solid fa-ban"></i>&nbsp;Unreachable</a></li>
+                </ul>
+            </div>
+            <div class="content-js" id="foundedJs">
+                {{foundedjsTable}}
+            </div>
+            <div class="content-js" style="display: none;" id="unreachAbleJs">
+                {{unreachAblejsTable}}
+            </div>
+
+            <br>
+            <br>
+            <h2 class="title"><i class="fa-brands fa-css3-alt"></i>&nbsp;Stylesheet Resources</h2>
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="heading">Total Styles</p>
+                    <p class="subtitle">{{totalStyles}}</p>
+                  </div>
+                </div>
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="heading">Founded</p>
+                    <p class="subtitle">{{foundedStyles}}</p>
+                  </div>
+                </div>
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="heading">Unreachable</p>
+                    <p class="subtitle">{{unreachAbleStyles}}</p>
+                  </div>
+                </div>
+              </nav>
+            <div class="tabs">
+                <ul>
+                  <li class="is-active tab-style" onclick="openStyle(event,'foundedStyles')" ><a><i class="fa-solid fa-check"></i>&nbsp;Founded</a></li>
+                  <li class="tab-style" onclick="openStyle(event,'unreachAbleStyles')" ><a><i class="fa-solid fa-ban"></i>&nbsp;Unreachable</a></li>
+                </ul>
+            </div>
+            <div class="content-style" id="foundedStyles">
+                {{foundedStylesTable}}
+            </div>
+            <div class="content-style" style="display: none;" id="unreachAbleStyles">
+                {{unreachAbleStylesTable}}
+            </div>
+        </div>
+        <br>
+        <footer class="footer">
+            <div class="content has-text-centered">
+              <p>
+                <strong>Resource Checker</strong> by <a href="https://github.com/byozdemir">byozdemir</a>. The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+              </p>
+            </div>
+          </footer>
+    <script>
+        function openImages(evt, tabName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("content-image");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-image");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace("is-active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " is-active";
+        }
+        function openJs(evt, tabName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("content-js");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-js");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace("is-active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " is-active";
+        }
+        function openStyle(evt, tabName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("content-style");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-style");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace("is-active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " is-active";
+        }
+    </script>
+    </body>
+</html>
